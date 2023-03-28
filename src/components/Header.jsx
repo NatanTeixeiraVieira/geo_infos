@@ -4,8 +4,8 @@ import { HeaderContainer, Logo } from '@/styles/components/Header';
 
 export default function Header({ font }) {
   return (
-    <HeaderContainer className={font}>
-      <Logo>
+    <HeaderContainer className={font} role="heading">
+      <Logo data-testid="logo">
         <Image
           src="/images/logo.png"
           width={64}
