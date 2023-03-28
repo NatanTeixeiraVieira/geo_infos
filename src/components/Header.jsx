@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
-import { HeaderContainer, Logo } from './styles';
+import { HeaderContainer, Logo } from '@/styles/components/Header';
 
-export default function Header() {
+export default function Header({ font }) {
   return (
-    <HeaderContainer>
+    <HeaderContainer className={font}>
       <Logo>
         <Image
           src="/images/logo.png"

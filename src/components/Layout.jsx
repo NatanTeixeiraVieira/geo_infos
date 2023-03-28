@@ -1,8 +1,17 @@
 import Head from 'next/head';
 
-import Header from '../Header';
+import { Main } from '@/styles/components/Layout';
+import { Roboto } from 'next/font/google';
 
-export default function Layout({ children, font }) {
+import Header from './Header';
+import Footer from './Footer';
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
+
+export default function Layout({ children }) {
   return (
     <>
       <Head>
@@ -15,8 +24,9 @@ export default function Layout({ children, font }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
-      <Header />
-      <main className={font}>{children}</main>
+      <Header font={roboto.className} />
+      <Main className={roboto.className}>{children}</Main>
+      <Footer font={roboto.className} />
     </>
   );
 }

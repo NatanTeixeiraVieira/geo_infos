@@ -7,6 +7,7 @@ export default {
 
     background: '#E7E5DF',
 
-    border: '#000000',
+    textPrimary: '#000000',
+    textSecundary: '#ffffff',
   },
 };
