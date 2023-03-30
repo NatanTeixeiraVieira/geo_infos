@@ -1,11 +1,8 @@
 import Link from 'next/link';
 
-// import axios from 'axios';
-
 import { Container, Name, State, Uf } from '@/styles/pages/Home';
 
 export const getStaticProps = async () => {
-  // const data = await axios.get('https://brasilapi.com.br/api/ibge/uf/v1');
   const request = await fetch('https://brasilapi.com.br/api/ibge/uf/v1');
   const data = await request.json();
 
@@ -16,7 +13,7 @@ export const getStaticProps = async () => {
   };
 };
 export default function Home({ data }) {
-  console.log(data[0]);
+  console.log(data);
   return (
     <Container>
       {data.map((state) => (
