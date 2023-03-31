@@ -26,6 +26,6 @@ describe('Home', () => {
     renderPage();
     expect(screen.getByText('Paraná')).toBeInTheDocument();
     expect(screen.getByText('PR')).toBeInTheDocument();
-    expect(screen.getByText('Detalhes')).toBeInTheDocument();
+    expect(screen.getByText('Detalhes')).toHaveAttribute('href', '/state/pr');
   });
 });
