@@ -7,6 +7,8 @@ export default {
 
     background: '#E7E5DF',
 
+    button: '#44bba4',
+
     textPrimary: '#000000',
     textSecundary: '#ffffff',
   },

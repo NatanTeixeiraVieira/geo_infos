@@ -1,8 +1,10 @@
+import { ThemeProvider } from 'styled-components';
+
 import Home from '@/pages';
+import { render, screen } from '@testing-library/react';
+
 import GlobalStyles from '@/styles/GlobalStyles';
 import light from '@/styles/themes/light';
-import { render, screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
 
 const renderPage = () => {
   const data = [

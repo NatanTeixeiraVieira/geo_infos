@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const Main = styled.main`
-  padding: 2rem 0 4rem 0;
+  min-height: calc(100vh - 13rem);
+  padding: 2rem 2rem 4rem 2rem;
 `;

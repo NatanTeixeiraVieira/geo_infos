@@ -1,10 +1,10 @@
+import { Roboto } from 'next/font/google';
 import Head from 'next/head';
 
 import { Main } from '@/styles/components/Layout';
-import { Roboto } from 'next/font/google';
 
-import Header from './Header';
 import Footer from './Footer';
+import Header from './Header';
 
 const roboto = Roboto({
   weight: ['400', '700'],

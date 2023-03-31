@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "settings": {
     "react": {
@@ -19,15 +20,18 @@
     "airbnb",
     "airbnb/hooks",
     "prettier",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended"
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended"
   ],
   "overrides": [
     {
       //  We enable eslint-plugin-testing-library rules or preset only for matching testing files!
-      "files": "['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)']",
-      "extends": "['plugin:testing-library/react']"
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
     }
   ],
   "parserOptions": {
