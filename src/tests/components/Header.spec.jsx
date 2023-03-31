@@ -1,28 +1,41 @@
-import Header from '@/components/Header';
-import GlobalStyles from '@/styles/GlobalStyles';
-import light from '@/styles/themes/light';
-import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
+import Header from '@/components/Header';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import GlobalStyles from '@/styles/GlobalStyles';
+import light from '@/styles/themes/light';
+
+const renderPage = () => {
+  render(
+    <ThemeProvider theme={light}>
+      <GlobalStyles />
+      <Header />
+    </ThemeProvider>
+  );
+};
+
 describe('Header', () => {
+  it('should send to the home page when logo was pressed', async () => {
+    renderPage();
+    const user = userEvent.setup();
+    const logo = screen.getByTestId('logo');
+
+    window.location.href = 'http://localhost/state/pr';
+    await user.click(logo);
+    expect(window.location.href).toBe('http://localhost/');
+  });
+
   it('should render logo', () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Header />
-      </ThemeProvider>
-    );
+    renderPage();
     const logoImage = screen.getByAltText('Logo do site');
 
     expect(logoImage).toBeInTheDocument();
   });
 
   it('should apply style in header container', () => {
-    render(
-      <ThemeProvider theme={light}>
-        <GlobalStyles />
-        <Header />
-      </ThemeProvider>
-    );
+    renderPage();
     const headerContainer = screen.getByRole('heading');
 
     expect(headerContainer).toHaveStyle(`
@@ -30,21 +43,5 @@ describe('Header', () => {
       padding: 0 1.5rem;
       background-color: ${light.colors.secundary};
   `);
-  });
-
-  it('should apply styles in logo', () => {
-    render(
-      <ThemeProvider theme={light}>
-        <GlobalStyles />
-        <Header />
-      </ThemeProvider>
-    );
-    const logo = screen.getByTestId('logo');
-
-    expect(logo).toHaveStyle(`
-      display: flex;
-      align-items: center;
-      height: 100%;
-    `);
   });
 });

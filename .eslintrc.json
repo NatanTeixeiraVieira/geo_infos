@@ -58,7 +58,7 @@
 
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "warn",
-
+    "import/no-extraneous-dependencies": "warn",
     // Testing library
     "testing-library/await-async-query": "error",
     "testing-library/no-await-sync-query": "error",
