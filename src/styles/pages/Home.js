@@ -42,4 +42,5 @@ export const Uf = styled.p`
 export const RequestError = styled.h1`
   display: flex;
   justify-content: center;
+  font-size: 1.6rem;
 `;
