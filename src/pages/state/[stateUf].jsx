@@ -39,6 +39,10 @@ export const getStaticProps = async (context) => {
         `https://brasilapi.com.br/api/ibge/municipios/v1/${uf}`,
       ]);
 
+    console.log(dataBrasilState);
+    console.log(dataGeonames);
+    console.log(dataBrasilCities);
+
     return {
       props: {
         dataBrasilState,
@@ -77,20 +81,27 @@ export default function State({
             <p>
               População:{' '}
               {dataGeonames.geonames
-                .find((state) => state.name === dataBrasilState.nome)
+                .find(
+                  (state) =>
+                    state.name === dataBrasilState.nome ||
+                    (state.name === 'Federal District' &&
+                      dataBrasilState.nome === 'Distrito Federal')
+                )
                 .population.toLocaleString('pt-BR')}{' '}
               habitantes
             </p>
             <p>Número total de municípios: {dataBrasilCities.length} </p>
           </StateInfo>
-          <StateCities>
-            <CitiesTitle>Municípios</CitiesTitle>
-            <Cities>
-              {dataBrasilCities.map((city) => (
-                <CityName key={city.nome}>{city.nome}</CityName>
-              ))}
-            </Cities>
-          </StateCities>
+          {dataBrasilCities.length > 0 && (
+            <StateCities>
+              <CitiesTitle>Municípios</CitiesTitle>
+              <Cities>
+                {dataBrasilCities.map((city) => (
+                  <CityName key={city.nome}>{city.nome}</CityName>
+                ))}
+              </Cities>
+            </StateCities>
+          )}
         </Container>
       ) : (
         <RequestError>
