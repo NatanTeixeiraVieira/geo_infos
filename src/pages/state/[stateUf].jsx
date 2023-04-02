@@ -39,10 +39,6 @@ export const getStaticProps = async (context) => {
         `https://brasilapi.com.br/api/ibge/municipios/v1/${uf}`,
       ]);
 
-    console.log(dataBrasilState);
-    console.log(dataGeonames);
-    console.log(dataBrasilCities);
-
     return {
       props: {
         dataBrasilState,
