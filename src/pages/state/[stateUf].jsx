@@ -9,7 +9,6 @@ import {
   CityName,
   Container,
   NameTitle,
-  StateCities,
   StateInfo,
 } from '@/styles/pages/state/style';
 
@@ -89,14 +88,14 @@ export default function State({
             <p>Número total de municípios: {dataBrasilCities.length} </p>
           </StateInfo>
           {dataBrasilCities.length > 0 && (
-            <StateCities>
+            <section>
               <CitiesTitle>Municípios</CitiesTitle>
               <Cities>
                 {dataBrasilCities.map((city) => (
                   <CityName key={city.nome}>{city.nome}</CityName>
                 ))}
               </Cities>
-            </StateCities>
+            </section>
           )}
         </Container>
       ) : (

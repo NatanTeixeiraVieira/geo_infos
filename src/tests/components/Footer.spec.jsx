@@ -1,8 +1,10 @@
+import { ThemeProvider } from 'styled-components';
+
 import Footer from '@/components/Footer';
+import { render, screen } from '@testing-library/react';
+
 import GlobalStyles from '@/styles/GlobalStyles';
 import light from '@/styles/themes/light';
-import { render, screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
 
 describe('Footer', () => {
   it('should render copyright message', () => {

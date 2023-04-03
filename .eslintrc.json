@@ -15,15 +15,7 @@
       }
     }
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "airbnb/hooks",
-    "prettier",
-    // "plugin:prettier/recommended"
-    "plugin:testing-library/react",
-    "plugin:jest-dom/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
   "overrides": [
     {
       //  We enable eslint-plugin-testing-library rules or preset only for matching testing files!
@@ -31,7 +23,7 @@
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
       ],
-      "extends": ["plugin:testing-library/react"]
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
     }
   ],
   "parserOptions": {
