@@ -11,6 +11,7 @@ export const NameTitle = styled.h1`
   font-weight: 700;
   margin-bottom: 1.5rem;
   margin-left: 7.5%;
+
   @media (max-width: 1024px) {
     margin-left: 0;
   }
@@ -18,6 +19,7 @@ export const NameTitle = styled.h1`
 
 export const StateInfo = styled.section`
   margin-left: 7.5%;
+
   @media (max-width: 1024px) {
     margin-left: 0;
   }
