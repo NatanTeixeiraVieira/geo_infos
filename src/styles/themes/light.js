@@ -11,5 +11,7 @@ export default {
 
     textPrimary: '#000000',
     textSecundary: '#ffffff',
+
+    border: '#767676',
   },
 };

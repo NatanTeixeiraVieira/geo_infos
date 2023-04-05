@@ -1,14 +1,33 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useReducer } from 'react';
 
-import { GetData } from '@/utils/FetchData';
+import Filter from '@/components/Filter';
+import reducer from '@/reducers/HomeReducer';
+import { GetMultipleDatas } from '@/utils/FetchData';
 
-import { Container, Name, RequestError, State, Uf } from '@/styles/pages/Home';
+import {
+  Container,
+  Name,
+  RequestError,
+  State,
+  States,
+  Uf,
+} from '@/styles/pages/Home';
 
 export const getStaticProps = async () => {
   try {
-    const data = await GetData('https://brasilapi.com.br/api/ibge/uf/v1');
+    const [dataBrasilState, dataGeonames] = await GetMultipleDatas([
+      'https://brasilapi.com.br/api/ibge/uf/v1',
+      'http://www.geonames.org/childrenJSON?geonameId=3469034',
+    ]);
 
+    const data = dataBrasilState
+      .sort((stateA, stateB) => (stateA.nome > stateB.nome ? 1 : -1))
+      .map((state, i) => ({
+        ...state,
+        population: dataGeonames.geonames[i].population,
+      }));
     return {
       props: {
         data,
@@ -22,25 +41,44 @@ export const getStaticProps = async () => {
     };
   }
 };
+
 export default function Home({ data }) {
+  const [state, dispatch] = useReducer(reducer, {
+    brasilStates: data.sort((stateA, stateB) =>
+      stateA.nome > stateB.nome ? 1 : -1
+    ),
+  });
+
+  const handleChangeOption = (e) => {
+    dispatch({ type: e.target.value });
+  };
+
   return (
     <>
       <Head>
         <title>Estados do Brasil | GeoInfos</title>
       </Head>
-      {data ? (
+      {state.brasilStates ? (
         <Container>
-          {data
-            .sort((stateA, stateB) => (stateA.nome > stateB.nome ? 1 : -1))
-            .map((state) => (
-              <State key={state.nome}>
-                <Name>{state.nome}</Name>
-                <Uf>{state.sigla}</Uf>
-                <Link href={`/state/${state.sigla.toLowerCase()}`}>
+          <Filter handleChangeOption={handleChangeOption}>
+            <option>A - Z</option>
+            <option>Z - A</option>
+            <option>Regiões (A - Z)</option>
+            <option>Regiões (Z - A)</option>
+            <option>Menor população</option>
+            <option>Maior população</option>
+          </Filter>
+          <States>
+            {state.brasilStates.map((brasilState) => (
+              <State key={brasilState.nome}>
+                <Name>{brasilState.nome}</Name>
+                <Uf>{brasilState.sigla}</Uf>
+                <Link href={`/state/${brasilState.sigla.toLowerCase()}`}>
                   Detalhes
                 </Link>
               </State>
             ))}
+          </States>
         </Container>
       ) : (
         <RequestError>

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div``;
+
+export const States = styled.section`
   display: grid;
   grid-template-columns: 23% 23% 23% 23%;
   gap: 2rem 2.6%;
