@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
+import Search from '@/components/Search';
 import reducer from '@/reducers/HomeReducer';
 import { GetMultipleDatas } from '@/utils/FetchData';
 
 import {
   Container,
+  FilterAndSearch,
   Name,
   RequestError,
   State,
@@ -53,6 +55,10 @@ export default function Home({ data }) {
     dispatch({ type: e.target.value });
   };
 
+  const handleSearch = (e) => {
+    dispatch({ type: 'search', payload: { value: e.target.value, data } });
+  };
+
   return (
     <>
       <Head>
@@ -60,14 +66,17 @@ export default function Home({ data }) {
       </Head>
       {state.brasilStates ? (
         <Container>
-          <Filter handleChangeOption={handleChangeOption}>
-            <option>A - Z</option>
-            <option>Z - A</option>
-            <option>Regiões (A - Z)</option>
-            <option>Regiões (Z - A)</option>
-            <option>Menor população</option>
-            <option>Maior população</option>
-          </Filter>
+          <FilterAndSearch>
+            <Filter handleChangeOption={handleChangeOption}>
+              <option>A - Z</option>
+              <option>Z - A</option>
+              <option>Regiões (A - Z)</option>
+              <option>Regiões (Z - A)</option>
+              <option>Menor população</option>
+              <option>Maior população</option>
+            </Filter>
+            <Search handleSearch={handleSearch} />
+          </FilterAndSearch>
           <States>
             {state.brasilStates.map((brasilState) => (
               <State key={brasilState.nome}>

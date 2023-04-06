@@ -42,6 +42,15 @@ const HomeReducer = (state, action) => {
           stateA.population < stateB.population ? 1 : -1
         ),
       };
+    case 'search':
+      return {
+        ...state,
+        brasilStates: action.payload.data.filter((brasilState) =>
+          brasilState.nome
+            .toLowerCase()
+            .includes(action.payload.value.toLowerCase())
+        ),
+      };
 
     default:
       return state;

@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
+export const FilterAndSearch = styled.section`
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+`;
+
 export const States = styled.section`
   display: grid;
   grid-template-columns: 23% 23% 23% 23%;
