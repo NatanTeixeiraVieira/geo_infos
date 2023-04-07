@@ -1,17 +1,19 @@
+import RemoveAccents from '@/utils/RemoveAccents';
+
 const HomeReducer = (state, action) => {
   switch (action.type) {
     case 'A - Z':
       return {
         ...state,
         brasilStates: state.brasilStates.sort((stateA, stateB) =>
-          stateA.nome > stateB.nome ? 1 : -1
+          RemoveAccents(stateA.nome) > RemoveAccents(stateB.nome) ? 1 : -1
         ),
       };
     case 'Z - A':
       return {
         ...state,
         brasilStates: state.brasilStates.sort((stateA, stateB) =>
-          stateA.nome < stateB.nome ? 1 : -1
+          RemoveAccents(stateA.nome) < RemoveAccents(stateB.nome) ? 1 : -1
         ),
       };
     case 'Regiões (A - Z)':
@@ -46,9 +48,9 @@ const HomeReducer = (state, action) => {
       return {
         ...state,
         brasilStates: action.payload.data.filter((brasilState) =>
-          brasilState.nome
-            .toLowerCase()
-            .includes(action.payload.value.toLowerCase())
+          RemoveAccents(brasilState.nome.toLowerCase()).includes(
+            RemoveAccents(action.payload.value.toLowerCase())
+          )
         ),
       };
 

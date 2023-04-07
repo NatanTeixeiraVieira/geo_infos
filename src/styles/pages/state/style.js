@@ -6,6 +6,13 @@ export const Container = styled.div`
   }
 `;
 
+export const FilterAndSearch = styled.section`
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+`;
+
 export const NameTitle = styled.h1`
   font-size: 2rem;
   font-weight: 700;

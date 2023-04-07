@@ -1,5 +1,9 @@
 import Head from 'next/head';
+import { useReducer } from 'react';
 
+import Filter from '@/components/Filter';
+import Search from '@/components/Search';
+import reducer from '@/reducers/StateReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
 
 import { RequestError } from '@/styles/pages/Home';
@@ -8,6 +12,7 @@ import {
   CitiesTitle,
   CityName,
   Container,
+  FilterAndSearch,
   NameTitle,
   StateInfo,
 } from '@/styles/pages/state/style';
@@ -61,6 +66,25 @@ export default function State({
   dataGeonames,
   dataBrasilCities,
 }) {
+  const [state, dispatch] = useReducer(reducer, {
+    dataBrasilCities: dataBrasilCities.sort((stateA, stateB) =>
+      stateA.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '') >
+      stateB.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        ? 1
+        : -1
+    ),
+  });
+
+  const handleChangeOption = (e) => {
+    dispatch({ type: e.target.value });
+  };
+  const handleSearch = (e) => {
+    dispatch({
+      type: 'search',
+      payload: { value: e.target.value, dataBrasilCities },
+    });
+  };
+
   return (
     <>
       <Head>
@@ -68,6 +92,13 @@ export default function State({
       </Head>
       {dataBrasilState && dataGeonames && dataBrasilCities ? (
         <Container>
+          <FilterAndSearch>
+            <Filter handleChangeOption={handleChangeOption}>
+              <option>A - Z</option>
+              <option>Z - A</option>
+            </Filter>
+            <Search handleSearch={handleSearch} />
+          </FilterAndSearch>
           <NameTitle>{dataBrasilState.nome}</NameTitle>
           <StateInfo>
             <p>Sigla: {dataBrasilState.sigla}</p>
@@ -77,9 +108,9 @@ export default function State({
               População:{' '}
               {dataGeonames.geonames
                 .find(
-                  (state) =>
-                    state.name === dataBrasilState.nome ||
-                    (state.name === 'Federal District' &&
+                  (brasilState) =>
+                    brasilState.name === dataBrasilState.nome ||
+                    (brasilState.name === 'Federal District' &&
                       dataBrasilState.nome === 'Distrito Federal')
                 )
                 .population.toLocaleString('pt-BR')}{' '}
@@ -87,11 +118,11 @@ export default function State({
             </p>
             <p>Número total de municípios: {dataBrasilCities.length} </p>
           </StateInfo>
-          {dataBrasilCities.length > 0 && (
+          {state.dataBrasilCities.length > 0 && (
             <section>
               <CitiesTitle>Municípios</CitiesTitle>
               <Cities>
-                {dataBrasilCities.map((city) => (
+                {state.dataBrasilCities.map((city) => (
                   <CityName key={city.nome}>{city.nome}</CityName>
                 ))}
               </Cities>

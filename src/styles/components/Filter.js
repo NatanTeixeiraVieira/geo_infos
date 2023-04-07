@@ -5,7 +5,7 @@ export const FilterContainer = styled.div`
   align-items: center;
   width: 85%;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 `;
 
 export const LabelFilter = styled.label`

@@ -6,6 +6,7 @@ export const FilterAndSearch = styled.section`
   display: flex;
   width: 85%;
   margin: 0 auto;
+  margin-bottom: 2rem;
 `;
 
 export const States = styled.section`
