@@ -6,6 +6,18 @@ export const SearchContainer = styled.div`
   height: fit-content;
   margin-right: 0.15rem;
   width: 25%;
+
+  @media (max-width: 1024px) {
+    width: 39%;
+  }
+
+  @media (max-width: 760px) {
+    width: 60%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -14,6 +26,6 @@ export const SearchInput = styled.input`
   outline: none;
   border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 5px;
-  height: 2.3rem;
+  height: 2.5rem;
   width: 100%;
 `;

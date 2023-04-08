@@ -5,7 +5,10 @@ export const FilterContainer = styled.div`
   align-items: center;
   width: 85%;
   margin: 0 auto;
-  /* margin-bottom: 2rem; */
+
+  @media (max-width: 500px) {
+    margin: 2rem 0 0 0;
+  }
 `;
 
 export const LabelFilter = styled.label`
@@ -18,6 +21,14 @@ export const SelectContainer = styled.div`
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid ${(props) => props.theme.colors.border};
+
+  @media (max-width: 1024px) {
+    width: 35%;
+  }
+
+  @media (max-width: 295px) {
+    width: 50%;
+  }
 `;
 
 export const SelectFilter = styled.select`

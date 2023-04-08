@@ -7,6 +7,25 @@ export const FilterAndSearch = styled.section`
   width: 85%;
   margin: 0 auto;
   margin-bottom: 2rem;
+
+  @media (max-width: 1200px) {
+    width: 95%;
+  }
+  @media (max-width: 1080px) {
+    width: 90%;
+  }
+  @media (max-width: 845px) {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    width: 94%;
+  }
+  @media (max-width: 650px) {
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const States = styled.section`

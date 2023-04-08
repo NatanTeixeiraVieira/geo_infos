@@ -10,7 +10,15 @@ export const FilterAndSearch = styled.section`
   display: flex;
   width: 85%;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const NameTitle = styled.h1`
