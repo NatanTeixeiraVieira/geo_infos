@@ -13,5 +13,7 @@ export default {
     textSecundary: '#ffffff',
 
     border: '#767676',
+
+    skeletonAnimation: '#eee',
   },
 };

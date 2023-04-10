@@ -1,10 +1,13 @@
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 import { Main } from '@/styles/components/Layout';
 
 import Footer from './Footer';
 import Header from './Header';
+import Skeleton from './Skeleton';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -12,6 +15,21 @@ const roboto = Roboto({
 });
 
 export default function Layout({ children }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [urlState, setUrlState] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', (url) => {
+      setIsLoading(true);
+      setUrlState(url);
+      window.scrollTo(0, 0);
+    });
+    router.events.on('routeChangeComplete', () => {
+      setIsLoading(false);
+    });
+  });
+
   return (
     <>
       <Head>
@@ -25,6 +43,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/images/favicon.png" />
       </Head>
       <Header font={roboto.className} />
+      {isLoading && <Skeleton url={urlState} />}
       <Main className={roboto.className}>{children}</Main>
       <Footer font={roboto.className} />
     </>

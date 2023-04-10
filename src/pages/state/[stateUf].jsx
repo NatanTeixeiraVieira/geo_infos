@@ -5,6 +5,7 @@ import Filter from '@/components/Filter';
 import Search from '@/components/Search';
 import reducer from '@/reducers/StateReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
+import RemoveAccents from '@/utils/RemoveAccents';
 
 import { RequestError } from '@/styles/pages/Home';
 import {
@@ -67,11 +68,8 @@ export default function State({
   dataBrasilCities,
 }) {
   const [state, dispatch] = useReducer(reducer, {
-    dataBrasilCities: dataBrasilCities.sort((stateA, stateB) =>
-      stateA.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '') >
-      stateB.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        ? 1
-        : -1
+    dataBrasilCities: dataBrasilCities?.sort((stateA, stateB) =>
+      RemoveAccents(stateA.nome) > RemoveAccents(stateB.nome) ? 1 : -1
     ),
   });
 

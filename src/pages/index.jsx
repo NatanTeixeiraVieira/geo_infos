@@ -46,7 +46,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ data }) {
   const [state, dispatch] = useReducer(reducer, {
-    brasilStates: data.sort((stateA, stateB) =>
+    brasilStates: data?.sort((stateA, stateB) =>
       stateA.nome > stateB.nome ? 1 : -1
     ),
   });
