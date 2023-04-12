@@ -1,9 +1,14 @@
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+import { ThemeProvider } from 'styled-components';
+
+import { ThemeContext } from '@/contexts/Theme/ThemeContext';
 
 import { Main } from '@/styles/components/Layout';
+import GlobalStyles from '@/styles/GlobalStyles';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -15,6 +20,8 @@ const roboto = Roboto({
 });
 
 export default function Layout({ children }) {
+  const { theme } = useContext(ThemeContext);
+
   const [isLoading, setIsLoading] = useState(false);
   const [urlState, setUrlState] = useState('');
   const router = useRouter();
@@ -42,10 +49,14 @@ export default function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
-      <Header font={roboto.className} />
-      {isLoading && <Skeleton url={urlState} />}
-      <Main className={roboto.className}>{children}</Main>
-      <Footer font={roboto.className} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+
+        <Header font={roboto.className} />
+        {isLoading && <Skeleton url={urlState} />}
+        <Main className={roboto.className}>{children}</Main>
+        <Footer font={roboto.className} />
+      </ThemeProvider>
     </>
   );
 }

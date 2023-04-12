@@ -35,4 +35,6 @@ export const SelectFilter = styled.select`
   border: none;
   outline: none;
   width: 100%;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.textPrimary};
 `;

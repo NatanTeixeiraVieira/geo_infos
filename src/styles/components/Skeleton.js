@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 const animation = keyframes`
   from {
@@ -16,7 +16,8 @@ const skeleton = styled.div`
     background: linear-gradient(
       -90deg,
       ${theme.colors.skeletonAnimation} 0%,
-      ${lighten(0.2, theme.colors.skeletonAnimation)} 50%,
+      ${lighten(theme.colors.skeletonLighten, theme.colors.skeletonAnimation)}
+        50%,
       ${theme.colors.skeletonAnimation} 100%
     );
     background-size: 400% 400%;

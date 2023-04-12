@@ -24,8 +24,14 @@ export const SearchInput = styled.input`
   font-size: 1rem;
   padding: 0.5rem;
   outline: none;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.textPrimary};
   border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 5px;
   height: 2.5rem;
   width: 100%;
+
+  ::placeholder {
+    color: ${(props) => props.theme.colors.placeholder};
+  }
 `;

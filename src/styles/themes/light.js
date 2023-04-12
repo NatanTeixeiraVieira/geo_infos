@@ -13,7 +13,9 @@ export default {
     textSecundary: '#ffffff',
 
     border: '#767676',
+    placeholder: '#lightgray',
 
-    skeletonAnimation: '#eee',
+    skeletonAnimation: '#efefef',
+    skeletonLighten: 1,
   },
 };

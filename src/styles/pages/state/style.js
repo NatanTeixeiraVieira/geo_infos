@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  color: ${(props) => props.theme.colors.textPrimary};
+
   p {
     line-height: 1.5rem;
   }

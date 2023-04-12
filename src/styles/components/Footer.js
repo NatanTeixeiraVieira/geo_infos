@@ -9,7 +9,7 @@ export const FooterContainer = styled.footer`
 `;
 
 export const Copyright = styled.p`
-  color: ${(props) => props.theme.colors.textSecundary};
+  color: #fff;
   font-size: 1rem;
 
   span {

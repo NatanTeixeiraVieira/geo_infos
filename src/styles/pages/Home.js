@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  color: ${(props) => props.theme.colors.textPrimary};
+`;
 
 export const FilterAndSearch = styled.section`
   display: flex;
@@ -79,7 +81,7 @@ export const State = styled.div`
     max-width: 95%;
     padding: 0.7rem 2rem;
     border-radius: 5px;
-    color: ${(props) => props.theme.colors.textSecundary};
+    color: #fff;
     text-align: center;
   }
 `;
