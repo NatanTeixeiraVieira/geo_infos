@@ -35,12 +35,20 @@ export const Container = styled.div`
 export const AllContent = styled.div`
   width: 85%;
   margin: 0 auto;
+
+  @media (max-width: 1010px) {
+    width: 100%;
+  }
 `;
 
 export const FilterAndSearch = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
+
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Filter = styled(skeleton)`
@@ -48,6 +56,15 @@ export const Filter = styled(skeleton)`
   height: 2.2rem;
   border-radius: 5px;
   opacity: 0.8;
+
+  @media (max-width: 1020px) {
+    width: 30%;
+  }
+
+  @media (max-width: 500px) {
+    width: 40%;
+    margin-top: 2rem;
+  }
 `;
 
 export const Search = styled(skeleton)`
@@ -55,6 +72,14 @@ export const Search = styled(skeleton)`
   height: 2.2rem;
   border-radius: 5px;
   opacity: 0.8;
+
+  @media (max-width: 1020px) {
+    width: 30%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const StatesInfo = styled.div`
@@ -62,29 +87,41 @@ export const StatesInfo = styled.div`
   flex-direction: column;
   gap: 0.5rem 0;
 `;
+
 export const StateInfo = styled(skeleton)`
   ${({ theme, isTitle = false }) => css`
     background-color: ${theme.colors.primary};
-    width: 15%;
+    width: 20%;
     border-radius: 10px;
     margin: ${isTitle ? '1.7rem 0' : '0'};
     height: ${isTitle ? '2rem' : '1rem'};
     opacity: 0.8;
+
+    @media (max-width: 1020px) {
+      width: 30%;
+    }
+
+    @media (max-width: 600px) {
+      width: 50%;
+    }
   `}
 `;
 
 export const List = styled.div`
-  ${({ spacings }) => css`
-    display: flex;
-    flex-wrap: wrap;
+  ${({ spacings, width }) => css`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(${width}rem, 1fr));
     gap: 2rem ${spacings}%;
+
+    @media (max-width: 350px) {
+      grid-template-columns: 1fr;
+    }
   `}
 `;
 
 export const Content = styled(skeleton)`
-  ${({ height, width }) => css`
-    width: ${width}%;
-    height: ${height}vh;
+  ${({ height }) => css`
+    height: ${height}rem;
     opacity: 0.8;
     border-radius: 10px;
     cursor: progress;

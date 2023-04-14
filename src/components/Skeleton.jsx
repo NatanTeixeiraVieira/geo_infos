@@ -29,13 +29,12 @@ export default function Skeleton({ url }) {
             <StateInfo isTitle />
           </StatesInfo>
         )}
-        <List spacings={isHomePage ? 2.6 : 5}>
+        <List spacings={isHomePage ? 2.5 : 5} width={isHomePage ? 15 : 17}>
           {[...Array(isHomePage ? 26 : 100)].map((_, index) => (
             <Content
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              height={isHomePage ? 26 : 12}
-              width={isHomePage ? 23 : 30}
+              height={isHomePage ? 12 : 5}
             />
           ))}
         </List>

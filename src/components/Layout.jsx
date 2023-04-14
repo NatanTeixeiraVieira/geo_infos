@@ -22,9 +22,9 @@ const roboto = Roboto({
 export default function Layout({ children }) {
   const { theme } = useContext(ThemeContext);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [urlState, setUrlState] = useState('');
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [urlState, setUrlState] = useState(router.asPath);
 
   useEffect(() => {
     router.events.on('routeChangeStart', (url) => {
@@ -35,7 +35,8 @@ export default function Layout({ children }) {
     router.events.on('routeChangeComplete', () => {
       setIsLoading(false);
     });
-  });
+    setIsLoading(false);
+  }, [router.events]);
 
   return (
     <>
