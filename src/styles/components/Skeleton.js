@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { lighten, darken } from 'polished';
+import { lighten } from 'polished';
 
 const animation = keyframes`
   from {
@@ -44,23 +44,17 @@ export const FilterAndSearch = styled.div`
 `;
 
 export const Filter = styled(skeleton)`
-  ${({ theme }) => css`
-    /* background-color: ${theme.colors.primary}; */
-    width: 15%;
-    height: 2.2rem;
-    border-radius: 5px;
-    opacity: 0.8;
-  `}
+  width: 15%;
+  height: 2.2rem;
+  border-radius: 5px;
+  opacity: 0.8;
 `;
 
 export const Search = styled(skeleton)`
-  ${({ theme }) => css`
-    /* background-color: ${theme.colors.primary}; */
-    width: 23%;
-    height: 2.2rem;
-    border-radius: 5px;
-    opacity: 0.8;
-  `}
+  width: 23%;
+  height: 2.2rem;
+  border-radius: 5px;
+  opacity: 0.8;
 `;
 
 export const StatesInfo = styled.div`
@@ -88,10 +82,9 @@ export const List = styled.div`
 `;
 
 export const Content = styled(skeleton)`
-  ${({ theme, height, width }) => css`
+  ${({ height, width }) => css`
     width: ${width}%;
     height: ${height}vh;
-    /* background-color: ${theme.colors.primary}; */
     opacity: 0.8;
     border-radius: 10px;
     cursor: progress;

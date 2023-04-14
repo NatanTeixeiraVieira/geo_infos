@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  color: ${(props) => props.theme.colors.textPrimary};
+  ${({ theme }) => css`
+    color: ${theme.colors.textPrimary};
+  `}
 
   p {
     line-height: 1.5rem;
@@ -14,7 +16,7 @@ export const FilterAndSearch = styled.section`
   margin: 0 auto;
   margin-bottom: 3rem;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1020px) {
     width: 100%;
   }
 
@@ -29,7 +31,7 @@ export const NameTitle = styled.h1`
   margin-bottom: 1.5rem;
   margin-left: 7.5%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1020px) {
     margin-left: 0;
   }
 `;
@@ -37,7 +39,7 @@ export const NameTitle = styled.h1`
 export const StateInfo = styled.section`
   margin-left: 7.5%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1020px) {
     margin-left: 0;
   }
 `;
@@ -49,14 +51,13 @@ export const CitiesTitle = styled(NameTitle)`
 
 export const Cities = styled.div`
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   gap: 2rem 5%;
   width: 85%;
   margin: 0 auto;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1020px) {
     width: 100%;
-    grid-template-columns: 31.5% 31.5% 31.5%;
     gap: 1.4rem 2.75%;
   }
   @media (max-width: 650px) {
@@ -69,12 +70,14 @@ export const Cities = styled.div`
 `;
 
 export const CityName = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: ${(props) => props.theme.colors.primary};
-  border-radius: 10px;
-  box-shadow: 0.3rem 0.3rem 0.75rem rgba(0, 0, 0, 0.5);
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: ${theme.colors.primary};
+    border-radius: 10px;
+    box-shadow: 0.3rem 0.3rem 0.75rem rgba(0, 0, 0, 0.5);
+  `}
 `;

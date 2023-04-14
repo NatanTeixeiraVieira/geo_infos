@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FilterContainer = styled.div`
   display: flex;
@@ -16,25 +16,29 @@ export const LabelFilter = styled.label`
 `;
 
 export const SelectContainer = styled.div`
-  width: 15%;
-  background-color: ${(props) => props.theme.colors.primary};
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid ${(props) => props.theme.colors.border};
+  ${({ theme }) => css`
+    width: 15%;
+    background-color: ${theme.colors.primary};
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid ${theme.colors.border};
 
-  @media (max-width: 1024px) {
-    width: 35%;
-  }
+    @media (max-width: 1024px) {
+      width: 35%;
+    }
 
-  @media (max-width: 295px) {
-    width: 50%;
-  }
+    @media (max-width: 295px) {
+      width: 50%;
+    }
+  `}
 `;
 
 export const SelectFilter = styled.select`
-  border: none;
-  outline: none;
-  width: 100%;
-  background-color: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.textPrimary};
+  ${({ theme }) => css`
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.textPrimary};
+  `}
 `;

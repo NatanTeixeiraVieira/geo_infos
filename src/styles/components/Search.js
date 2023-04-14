@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -21,17 +21,19 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  font-size: 1rem;
-  padding: 0.5rem;
-  outline: none;
-  background-color: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.textPrimary};
-  border: 1px solid ${(props) => props.theme.colors.border};
-  border-radius: 5px;
-  height: 2.5rem;
-  width: 100%;
+  ${({ theme }) => css`
+    font-size: 1rem;
+    padding: 0.5rem;
+    outline: none;
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.textPrimary};
+    border: 1px solid ${theme.colors.border};
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 100%;
 
-  ::placeholder {
-    color: ${(props) => props.theme.colors.placeholder};
-  }
+    ::placeholder {
+      color: ${theme.colors.placeholder};
+    }
+  `}
 `;

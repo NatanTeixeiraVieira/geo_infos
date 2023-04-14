@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  color: ${(props) => props.theme.colors.textPrimary};
+  ${({ theme }) => css`
+    color: ${theme.colors.textPrimary};
+  `}
 `;
 
 export const FilterAndSearch = styled.section`
@@ -10,19 +12,7 @@ export const FilterAndSearch = styled.section`
   margin: 0 auto;
   margin-bottom: 2rem;
 
-  @media (max-width: 1200px) {
-    width: 95%;
-  }
-  @media (max-width: 1080px) {
-    width: 90%;
-  }
-  @media (max-width: 845px) {
-    width: 100%;
-  }
-  @media (max-width: 768px) {
-    width: 94%;
-  }
-  @media (max-width: 650px) {
+  @media (max-width: 1000px) {
     width: 100%;
   }
   @media (max-width: 500px) {
@@ -32,58 +22,43 @@ export const FilterAndSearch = styled.section`
 
 export const States = styled.section`
   display: grid;
-  grid-template-columns: 23% 23% 23% 23%;
-  gap: 2rem 2.6%;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
   width: 85%;
   margin: 0 auto;
 
-  @media (max-width: 1200px) {
-    width: 95%;
-    gap: 1.8rem 2.6%;
+  @media (max-width: 1020px) {
+    gap: 1.5rem;
   }
-  @media (max-width: 1080px) {
-    width: 90%;
-    grid-template-columns: 31.6% 31.6% 31.6%;
-    gap: 1.5rem 2.6%;
-  }
-  @media (max-width: 845px) {
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    gap: 1.5rem;
     width: 100%;
-    gap: 1.3rem 2.6%;
-  }
-  @media (max-width: 768px) {
-    grid-template-columns: 45% 45%;
-    gap: 1.5rem 3.33%;
-    margin: 0 3.33%;
-  }
-  @media (max-width: 650px) {
-    grid-template-columns: 48.5% 48.5%;
-    gap: 1rem 3%;
-    margin: 0;
-  }
-  @media (max-width: 500px) {
-    grid-template-columns: 100%;
   }
 `;
 
 export const State = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
-  background-color: ${(props) => props.theme.colors.primary};
-  border-radius: 10px;
-  box-shadow: 0.3rem 0.3rem 0.75rem rgba(0, 0, 0, 0.5);
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-color: ${theme.colors.primary};
+    border-radius: 10px;
+    box-shadow: 0.3rem 0.3rem 0.75rem rgba(0, 0, 0, 0.5);
 
-  a {
-    text-decoration: none;
-    background-color: ${(props) => props.theme.colors.button};
-    min-width: 60%;
-    max-width: 95%;
-    padding: 0.7rem 2rem;
-    border-radius: 5px;
-    color: #fff;
-    text-align: center;
-  }
+    a {
+      text-decoration: none;
+      background-color: ${theme.colors.button};
+      min-width: 60%;
+      max-width: 95%;
+      padding: 0.7rem 2rem;
+      border-radius: 5px;
+      color: #fff;
+      text-align: center;
+    }
+  `}
 `;
 
 export const Name = styled.h1`
