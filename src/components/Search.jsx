@@ -1,9 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { SearchContainer, SearchInput } from '@/styles/components/Search';
+import { useTheme } from 'styled-components';
+
+import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
+
+import {
+  SearchContainer,
+  SearchInput,
+  XIcon,
+} from '@/styles/components/Search';
 
 export default function Search({ dispatcher, data }) {
   const [searchValue, setSearchValue] = useState('');
+  const inputSearchRef = useRef();
+  const theme = useTheme();
 
   useEffect(() => {
     dispatcher({ type: 'search', payload: { value: searchValue, data } });
@@ -13,14 +24,33 @@ export default function Search({ dispatcher, data }) {
     setSearchValue(e.target.value);
   };
 
+  const handleClickIcon = () => {
+    setSearchValue('');
+  };
+
+  const handleClickSearchIcon = () => {
+    inputSearchRef.current.focus();
+  };
+
   return (
     <SearchContainer>
+      <SearchIcon
+        style={{
+          color: theme.colors.textPrimary,
+          opacity: theme.title === 'light' ? 0.7 : 1,
+        }}
+        onClick={handleClickSearchIcon}
+      />
       <SearchInput
         type="text"
         placeholder="Pesquisar Estado"
         onChange={handleSearch}
         value={searchValue}
+        ref={inputSearchRef}
       />
+      <XIcon onClick={handleClickIcon}>
+        {searchValue && <ClearIcon fontSize="small" />}
+      </XIcon>
     </SearchContainer>
   );
 }
