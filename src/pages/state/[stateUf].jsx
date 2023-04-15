@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
 import Search from '@/components/Search';
-import reducer from '@/reducers/StateReducer';
+import reducer from '@/reducers/sortSearchReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
 import RemoveAccents from '@/utils/RemoveAccents';
 
@@ -68,20 +68,10 @@ export default function State({
   dataBrasilCities,
 }) {
   const [state, dispatch] = useReducer(reducer, {
-    dataBrasilCities: dataBrasilCities?.sort((stateA, stateB) =>
+    datas: dataBrasilCities?.sort((stateA, stateB) =>
       RemoveAccents(stateA.nome) > RemoveAccents(stateB.nome) ? 1 : -1
     ),
   });
-
-  const handleChangeOption = (e) => {
-    dispatch({ type: e.target.value });
-  };
-  const handleSearch = (e) => {
-    dispatch({
-      type: 'search',
-      payload: { value: e.target.value, dataBrasilCities },
-    });
-  };
 
   return (
     <>
@@ -91,11 +81,11 @@ export default function State({
       {dataBrasilState && dataGeonames && dataBrasilCities ? (
         <Container>
           <FilterAndSearch>
-            <Filter handleChangeOption={handleChangeOption}>
+            <Filter dispatcher={dispatch}>
               <option>A - Z</option>
               <option>Z - A</option>
             </Filter>
-            <Search handleSearch={handleSearch} />
+            <Search dispatcher={dispatch} data={dataBrasilCities} />
           </FilterAndSearch>
           <NameTitle>{dataBrasilState.nome}</NameTitle>
           <StateInfo>
@@ -116,11 +106,11 @@ export default function State({
             </p>
             <p>Número total de municípios: {dataBrasilCities.length} </p>
           </StateInfo>
-          {state.dataBrasilCities.length > 0 && (
+          {state.datas.length > 0 && (
             <section>
               <CitiesTitle>Municípios</CitiesTitle>
               <Cities>
-                {state.dataBrasilCities.map((city) => (
+                {state.datas.map((city) => (
                   <CityName key={city.nome}>{city.nome}</CityName>
                 ))}
               </Cities>

@@ -5,7 +5,11 @@ import {
   SelectFilter,
 } from '@/styles/components/Filter';
 
-export default function Filter({ children, handleChangeOption }) {
+export default function Filter({ children, dispatcher }) {
+  const handleChangeOption = (e) => {
+    dispatcher({ type: e.target.value });
+  };
+
   return (
     <FilterContainer>
       <LabelFilter>Ordenar: </LabelFilter>

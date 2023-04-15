@@ -4,7 +4,7 @@ import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
 import Search from '@/components/Search';
-import reducer from '@/reducers/HomeReducer';
+import reducer from '@/reducers/sortSearchReducer';
 import { GetMultipleDatas } from '@/utils/FetchData';
 
 import {
@@ -46,28 +46,18 @@ export const getStaticProps = async () => {
 
 export default function Home({ data }) {
   const [state, dispatch] = useReducer(reducer, {
-    brasilStates: data?.sort((stateA, stateB) =>
-      stateA.nome > stateB.nome ? 1 : -1
-    ),
+    datas: data?.sort((stateA, stateB) => (stateA.nome > stateB.nome ? 1 : -1)),
   });
-
-  const handleChangeOption = (e) => {
-    dispatch({ type: e.target.value });
-  };
-
-  const handleSearch = (e) => {
-    dispatch({ type: 'search', payload: { value: e.target.value, data } });
-  };
 
   return (
     <>
       <Head>
         <title>Estados do Brasil | GeoInfos</title>
       </Head>
-      {state.brasilStates ? (
+      {state.datas ? (
         <Container>
           <FilterAndSearch>
-            <Filter handleChangeOption={handleChangeOption}>
+            <Filter dispatcher={dispatch}>
               <option>A - Z</option>
               <option>Z - A</option>
               <option>Regiões (A - Z)</option>
@@ -75,10 +65,10 @@ export default function Home({ data }) {
               <option>Menor população</option>
               <option>Maior população</option>
             </Filter>
-            <Search handleSearch={handleSearch} />
+            <Search dispatcher={dispatch} data={data} />
           </FilterAndSearch>
           <States>
-            {state.brasilStates.map((brasilState) => (
+            {state.datas.map((brasilState) => (
               <State key={brasilState.nome}>
                 <Name>{brasilState.nome}</Name>
                 <Uf>{brasilState.sigla}</Uf>
