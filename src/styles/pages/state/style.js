@@ -35,14 +35,6 @@ export const NameTitle = styled.h1`
   }
 `;
 
-export const StateInfo = styled.section`
-  margin-left: 7.5%;
-
-  @media (max-width: 1020px) {
-    margin-left: 0;
-  }
-`;
-
 export const CitiesTitle = styled(NameTitle)`
   font-size: 1.7rem;
   margin-top: 2rem;

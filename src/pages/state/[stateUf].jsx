@@ -4,6 +4,7 @@ import { useReducer } from 'react';
 import Filter from '@/components/Filter';
 import NoMatches from '@/components/NoMatches';
 import Search from '@/components/Search';
+import StateInfo from '@/components/StateInfo';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
 import RemoveAccents from '@/utils/RemoveAccents';
@@ -16,22 +17,28 @@ import {
   Container,
   FilterAndSearch,
   NameTitle,
-  StateInfo,
 } from '@/styles/pages/state/style';
 
 export const getStaticPaths = async () => {
-  const data = await GetData('https://brasilapi.com.br/api/ibge/uf/v1');
+  try {
+    const data = await GetData('https://brasilapi.com.br/api/ibge/uf/v1');
 
-  const paths = data.map((path) => ({
-    params: {
-      stateUf: path.sigla.toLowerCase(),
-    },
-  }));
+    const paths = data.map((path) => ({
+      params: {
+        stateUf: path.sigla.toLowerCase(),
+      },
+    }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 };
 
 export const getStaticProps = async (context) => {
@@ -82,24 +89,11 @@ export default function State({
       {dataBrasilState && dataGeonames && dataBrasilCities ? (
         <Container>
           <NameTitle>{dataBrasilState.nome}</NameTitle>
-          <StateInfo>
-            <p>Sigla: {dataBrasilState.sigla}</p>
-            <p>Região: {dataBrasilState.regiao.nome}</p>
-            <p>Sigla da região: {dataBrasilState.regiao.sigla}</p>
-            <p>
-              População:{' '}
-              {dataGeonames.geonames
-                .find(
-                  (brasilState) =>
-                    brasilState.name === dataBrasilState.nome ||
-                    (brasilState.name === 'Federal District' &&
-                      dataBrasilState.nome === 'Distrito Federal')
-                )
-                .population.toLocaleString('pt-BR')}{' '}
-              habitantes
-            </p>
-            <p>Número total de municípios: {dataBrasilCities.length} </p>
-          </StateInfo>
+          <StateInfo
+            dataBrasilState={dataBrasilState}
+            dataGeonames={dataGeonames}
+            state={state}
+          />
           <section>
             <CitiesTitle>Municípios</CitiesTitle>
             <FilterAndSearch>
