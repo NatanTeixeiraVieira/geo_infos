@@ -1,22 +1,14 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
 import NoMatches from '@/components/NoMatches';
 import Search from '@/components/Search';
+import States from '@/components/States';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetMultipleDatas } from '@/utils/FetchData';
 
-import {
-  Container,
-  FilterAndSearch,
-  Name,
-  RequestError,
-  State,
-  States,
-  Uf,
-} from '@/styles/pages/Home';
+import { Container, FilterAndSearch, RequestError } from '@/styles/pages/Home';
 
 export const getStaticProps = async () => {
   try {
@@ -45,9 +37,11 @@ export const getStaticProps = async () => {
   }
 };
 
-export default function Home({ data }) {
+export default function Home({ data: brasilStates }) {
   const [state, dispatch] = useReducer(reducer, {
-    datas: data?.sort((stateA, stateB) => (stateA.nome > stateB.nome ? 1 : -1)),
+    datas: brasilStates?.sort((stateA, stateB) =>
+      stateA.nome > stateB.nome ? 1 : -1
+    ),
   });
 
   return (
@@ -66,7 +60,7 @@ export default function Home({ data }) {
               <option>Menor população</option>
               <option>Maior população</option>
             </Filter>
-            <Search dispatcher={dispatch} data={data} />
+            <Search dispatcher={dispatch} data={brasilStates} />
           </FilterAndSearch>
           {state.datas.length === 0 && (
             <NoMatches>
@@ -74,17 +68,7 @@ export default function Home({ data }) {
               a sua pesquisa
             </NoMatches>
           )}
-          <States>
-            {state.datas.map((brasilState) => (
-              <State key={brasilState.nome}>
-                <Name>{brasilState.nome}</Name>
-                <Uf>{brasilState.sigla}</Uf>
-                <Link href={`/state/${brasilState.sigla.toLowerCase()}`}>
-                  Detalhes
-                </Link>
-              </State>
-            ))}
-          </States>
+          <States state={state} />
         </Container>
       ) : (
         <RequestError>
