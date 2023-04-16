@@ -13,8 +13,7 @@ export const Container = styled.div`
 export const FilterAndSearch = styled.section`
   display: flex;
   width: 85%;
-  margin: 0 auto;
-  margin-bottom: 3rem;
+  margin: 2rem auto;
 
   @media (max-width: 1020px) {
     width: 100%;

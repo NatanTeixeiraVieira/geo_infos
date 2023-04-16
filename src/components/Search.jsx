@@ -43,7 +43,7 @@ export default function Search({ dispatcher, data }) {
       />
       <SearchInput
         type="text"
-        placeholder="Pesquisar Estado"
+        placeholder="Pesquisar"
         onChange={handleSearch}
         value={searchValue}
         ref={inputSearchRef}

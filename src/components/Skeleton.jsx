@@ -15,19 +15,27 @@ export default function Skeleton({ url }) {
   return (
     <Container>
       <AllContent>
-        <FilterAndSearch>
-          <Filter />
-          <Search />
-        </FilterAndSearch>
+        {isHomePage && (
+          <FilterAndSearch>
+            <Filter />
+            <Search />
+          </FilterAndSearch>
+        )}
         {!isHomePage && (
-          <StatesInfo>
-            <StateInfo isTitle />
-            {[...Array(5)].map((_, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <StateInfo key={index} />
-            ))}
-            <StateInfo isTitle />
-          </StatesInfo>
+          <>
+            <StatesInfo>
+              <StateInfo isTitle />
+              {[...Array(5)].map((_, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <StateInfo key={index} />
+              ))}
+              <StateInfo isTitle />
+            </StatesInfo>
+            <FilterAndSearch>
+              <Filter />
+              <Search />
+            </FilterAndSearch>
+          </>
         )}
         <List spacings={isHomePage ? 2.5 : 5} width={isHomePage ? 15 : 17}>
           {[...Array(isHomePage ? 26 : 100)].map((_, index) => (

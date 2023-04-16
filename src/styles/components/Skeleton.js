@@ -93,7 +93,7 @@ export const StateInfo = styled(skeleton)`
     background-color: ${theme.colors.primary};
     width: 20%;
     border-radius: 10px;
-    margin: ${isTitle ? '1.7rem 0' : '0'};
+    margin: ${isTitle ? '1.5rem 0' : '0'};
     height: ${isTitle ? '2rem' : '1rem'};
     opacity: 0.8;
 

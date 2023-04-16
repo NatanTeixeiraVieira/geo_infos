@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
+import NoMatches from '@/components/NoMatches';
 import Search from '@/components/Search';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
@@ -80,13 +81,6 @@ export default function State({
       </Head>
       {dataBrasilState && dataGeonames && dataBrasilCities ? (
         <Container>
-          <FilterAndSearch>
-            <Filter dispatcher={dispatch}>
-              <option>A - Z</option>
-              <option>Z - A</option>
-            </Filter>
-            <Search dispatcher={dispatch} data={dataBrasilCities} />
-          </FilterAndSearch>
           <NameTitle>{dataBrasilState.nome}</NameTitle>
           <StateInfo>
             <p>Sigla: {dataBrasilState.sigla}</p>
@@ -106,16 +100,27 @@ export default function State({
             </p>
             <p>Número total de municípios: {dataBrasilCities.length} </p>
           </StateInfo>
-          {state.datas.length > 0 && (
-            <section>
-              <CitiesTitle>Municípios</CitiesTitle>
-              <Cities>
-                {state.datas.map((city) => (
-                  <CityName key={city.nome}>{city.nome}</CityName>
-                ))}
-              </Cities>
-            </section>
-          )}
+          <section>
+            <CitiesTitle>Municípios</CitiesTitle>
+            <FilterAndSearch>
+              <Filter dispatcher={dispatch}>
+                <option>A - Z</option>
+                <option>Z - A</option>
+              </Filter>
+              <Search dispatcher={dispatch} data={dataBrasilCities} />
+            </FilterAndSearch>
+            {state.datas.length === 0 && (
+              <NoMatches>
+                Desculpe, não foi possível encontrar nenhuma cidade
+                correspondente a sua pesquisa
+              </NoMatches>
+            )}
+            <Cities>
+              {state.datas.map((city) => (
+                <CityName key={city.nome}>{city.nome}</CityName>
+              ))}
+            </Cities>
+          </section>
         </Container>
       ) : (
         <RequestError>

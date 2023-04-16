@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
+import NoMatches from '@/components/NoMatches';
 import Search from '@/components/Search';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetMultipleDatas } from '@/utils/FetchData';
@@ -67,6 +68,12 @@ export default function Home({ data }) {
             </Filter>
             <Search dispatcher={dispatch} data={data} />
           </FilterAndSearch>
+          {state.datas.length === 0 && (
+            <NoMatches>
+              Desculpe, não foi possível encontrar nenhum Estado correspondente
+              a sua pesquisa
+            </NoMatches>
+          )}
           <States>
             {state.datas.map((brasilState) => (
               <State key={brasilState.nome}>
