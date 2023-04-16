@@ -1,38 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img alt="" src="./public/images/favicon.png" width="150" height="150" >
+</div>
+<h1 align="center">Geo Infos</h1>
 
-## Getting Started
+<p align="center">
+  Este projeto é um site que exibe todos os estados do Brasil e todo os municípios do Estado escolhido.
+</p>
 
-First, run the development server:
+<p align="center">
+    <a href="#features">Features</a> &nbsp;&nbsp;•&nbsp;&nbsp;
+    <a href="#tecnologias">Tecnologias</a> &nbsp;&nbsp;•&nbsp;&nbsp;
+    <a href="#pré-requisitos">Pré-requisitos</a> &nbsp;&nbsp;•&nbsp;&nbsp;
+    <a href="#rodando-o-front-end">Rodar a aplicação</a>
+</p>
+
+---
+
+<br><br>
+
+<div align="center">
+    <img alt="" src="./.github/geoinfosHome.gif">
+    <br><br>
+    <img alt="" src="./.github/geoinfosHomeToStates.gif">
+    <br><br>
+    <img alt="" src="./.github/geoinfosThemeSwitch.gif">
+</div>
+
+<br><br>
+
+## Features
+
+- [x] Troca de temas
+- [x] O tema é mantido
+- [x] Consumo da API de Estados e cidades brasileiras
+- [x] Exibe informações sobre todos os Estados brasileiros
+- [x] Exibe o nome de todas as cidades do Estado escolhido
+- [x] Barra de progresso enquanto carrega as requisições
+- [x] Skeleton
+- [x] Barra de pesquisa
+- [x] Barra de filtragem
+- [x] Página 404
+
+<br>
+
+## Tecnologias
+
+Para o desenvolvimento deste projeto foram utilizadas as seguintes tecnologias:
+
+- [React](https://reactjs.org/)
+- [Next](https://nextjs.org/)
+- [Context API](https://react.dev/reference/react/useContext)
+- [API de Estados e municípios](https://brasilapi.com.br/)
+- [API com número de habitantes dos Estados](https://www.geonames.org/)
+- [Material UI](https://mui.com/)
+- [Styled Components](https://styled-components.com/)
+- [Nextjs progressbar](https://github.com/apal21/nextjs-progressbar)
+- [Polished](https://polished.js.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Testing Library](https://testing-library.com/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [EditorConfig](https://prettier.io/)
+
+<br>
+
+## Pré-requisitos
+
+Para rodar esse projeto na sua máquina, você precisará instalar as seguintes ferramentas: [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+
+O editor de código recomendado é o [Visual Studio Code](https://code.visualstudio.com/)
+
+<br>
+
+## Rodando o Front-End
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Clone este repositório
+$ git clone https://github.com/NatanTeixeiraVieira/geo_infos
+# Acesse a pasta do projeto
+$ cd geo_infos
+# Instale as dependências
+$ npm install
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Made with ❤️ by Natãn Teixeira Vieira
