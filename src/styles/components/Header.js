@@ -16,6 +16,17 @@ export const HeaderContainer = styled.header`
   `}
 `;
 
+export const HeaderButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+`;
+
+export const NavigationList = styled.nav`
+  display: flex;
+  gap: 2.5rem;
+`;
+
 export const ThemeSwitcher = styled.div`
   color: #fff;
   cursor: pointer;
