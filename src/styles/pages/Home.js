@@ -19,9 +19,3 @@ export const FilterAndSearch = styled.section`
     flex-direction: column-reverse;
   }
 `;
-
-export const RequestError = styled.h1`
-  display: flex;
-  justify-content: center;
-  font-size: 1.6rem;
-`;

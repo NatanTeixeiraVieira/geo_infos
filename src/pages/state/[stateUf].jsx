@@ -3,13 +3,13 @@ import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
 import NoMatches from '@/components/NoMatches';
+import RequestError from '@/components/RequestError';
 import Search from '@/components/Search';
 import StateInfo from '@/components/StateInfo';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetData, GetMultipleDatas } from '@/utils/FetchData';
 import RemoveAccents from '@/utils/RemoveAccents';
 
-import { RequestError } from '@/styles/pages/Home';
 import {
   Cities,
   CitiesTitle,
@@ -117,9 +117,7 @@ export default function State({
           </section>
         </Container>
       ) : (
-        <RequestError>
-          Desculpe, houve algum erro ao carregar as informações.
-        </RequestError>
+        <RequestError />
       )}
     </>
   );

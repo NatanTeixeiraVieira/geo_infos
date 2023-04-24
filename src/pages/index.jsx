@@ -3,12 +3,13 @@ import { useReducer } from 'react';
 
 import Filter from '@/components/Filter';
 import NoMatches from '@/components/NoMatches';
+import RequestError from '@/components/RequestError';
 import Search from '@/components/Search';
 import States from '@/components/States';
 import reducer from '@/reducers/sortSearchReducer';
 import { GetMultipleDatas } from '@/utils/FetchData';
 
-import { Container, FilterAndSearch, RequestError } from '@/styles/pages/Home';
+import { Container, FilterAndSearch } from '@/styles/pages/Home';
 
 export const getStaticProps = async () => {
   try {
@@ -71,9 +72,7 @@ export default function Home({ data: brasilStates }) {
           <States state={state} />
         </Container>
       ) : (
-        <RequestError>
-          Desculpe, houve algum erro ao carregar as informações.
-        </RequestError>
+        <RequestError />
       )}
     </>
   );
