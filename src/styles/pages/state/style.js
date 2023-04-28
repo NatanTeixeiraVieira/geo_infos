@@ -40,6 +40,12 @@ export const CitiesTitle = styled(NameTitle)`
   margin-top: 2rem;
 `;
 
+export const NoCities = styled.h2`
+  font-size: 1.7rem;
+  text-align: center;
+  margin-top: 5rem;
+`;
+
 export const Cities = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));

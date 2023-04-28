@@ -17,6 +17,7 @@ import {
   Container,
   FilterAndSearch,
   NameTitle,
+  NoCities,
 } from '@/styles/pages/state/style';
 
 export const getStaticPaths = async () => {
@@ -103,12 +104,16 @@ export default function State({
               </Filter>
               <Search dispatcher={dispatch} data={dataBrasilCities} />
             </FilterAndSearch>
-            {state.datas.length === 0 && (
-              <NoMatches>
-                Desculpe, não foi possível encontrar nenhuma cidade
-                correspondente a sua pesquisa
-              </NoMatches>
+            {dataBrasilState.sigla.toLowerCase() === 'df' && (
+              <NoCities>Não há municípios disponíveis</NoCities>
             )}
+            {state.datas.length === 0 &&
+              dataBrasilState.sigla.toLowerCase() !== 'df' && (
+                <NoMatches>
+                  Desculpe, não foi possível encontrar nenhuma cidade
+                  correspondente a sua pesquisa
+                </NoMatches>
+              )}
             <Cities>
               {state.datas.map((city) => (
                 <CityName key={city.nome}>{city.nome}</CityName>
