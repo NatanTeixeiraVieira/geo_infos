@@ -11,7 +11,8 @@
     <a href="#features">Features</a> &nbsp;&nbsp;•&nbsp;&nbsp;
     <a href="#tecnologias">Tecnologias</a> &nbsp;&nbsp;•&nbsp;&nbsp;
     <a href="#pré-requisitos">Pré-requisitos</a> &nbsp;&nbsp;•&nbsp;&nbsp;
-    <a href="#rodando-o-front-end">Rodar a aplicação</a>
+    <a href="#rodando-o-front-end">Rodar a aplicação</a>&nbsp;&nbsp;•&nbsp;&nbsp;
+    <a href="#testar-a-aplicação">Testar a aplicação</a>
 </p>
 
 ---
@@ -84,6 +85,12 @@ $ npm install
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
 ```
+
+<br>
+
+## Testar a aplicação
+
+Caso queira testar a aplicação sem instalar nada: https://geo-infos.vercel.app/
 
 <br>
 
