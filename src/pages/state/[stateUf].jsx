@@ -93,7 +93,7 @@ export default function State({
           <StateInfo
             dataBrasilState={dataBrasilState}
             dataGeonames={dataGeonames}
-            state={state}
+            dataBrasilCities={dataBrasilCities}
           />
           <section>
             <CitiesTitle>Municípios</CitiesTitle>

@@ -1,6 +1,10 @@
 import Wrapper from '@/styles/components/StateInfo';
 
-export default function StateInfo({ dataBrasilState, dataGeonames, state }) {
+export default function StateInfo({
+  dataBrasilState,
+  dataGeonames,
+  dataBrasilCities,
+}) {
   return (
     <Wrapper>
       <p>Sigla: {dataBrasilState.sigla}</p>
@@ -18,7 +22,7 @@ export default function StateInfo({ dataBrasilState, dataGeonames, state }) {
           .population.toLocaleString('pt-BR')}{' '}
         habitantes
       </p>
-      <p>Número total de municípios: {state.datas.length} </p>
+      <p>Número total de municípios: {dataBrasilCities.length} </p>
     </Wrapper>
   );
 }
