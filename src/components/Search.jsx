@@ -24,8 +24,9 @@ export default function Search({ dispatcher, data }) {
     setSearchValue(e.target.value);
   };
 
-  const handleClickIcon = () => {
+  const handleDelete = () => {
     setSearchValue('');
+    inputSearchRef.current.focus();
   };
 
   const handleClickSearchIcon = () => {
@@ -48,7 +49,7 @@ export default function Search({ dispatcher, data }) {
         value={searchValue}
         ref={inputSearchRef}
       />
-      <XIcon onClick={handleClickIcon}>
+      <XIcon onClick={handleDelete}>
         {searchValue && <ClearIcon fontSize="small" />}
       </XIcon>
     </SearchContainer>

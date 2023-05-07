@@ -49,7 +49,7 @@ const sortSearchReducer = (state, action) => {
         ...state,
         datas: action.payload.data.filter((data) =>
           RemoveAccents(data.nome.toLowerCase()).includes(
-            RemoveAccents(action.payload.value.toLowerCase())
+            RemoveAccents(action.payload.value.toLowerCase().trim())
           )
         ),
       };
