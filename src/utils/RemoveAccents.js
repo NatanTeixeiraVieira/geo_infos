@@ -1,4 +1,4 @@
-const RemoveAccents = (string) =>
+const removeAccents = (string) =>
   string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-export default RemoveAccents;
+export default removeAccents;

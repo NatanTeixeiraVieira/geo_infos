@@ -7,8 +7,8 @@ import RequestError from '@/components/RequestError';
 import Search from '@/components/Search';
 import StateInfo from '@/components/StateInfo';
 import reducer from '@/reducers/sortSearchReducer';
-import { GetData, GetMultipleDatas } from '@/utils/FetchData';
-import RemoveAccents from '@/utils/RemoveAccents';
+import { getData, getMultipleDatas } from '@/utils/fetchData';
+import removeAccents from '@/utils/removeAccents';
 
 import {
   Cities,
@@ -22,7 +22,7 @@ import {
 
 export const getStaticPaths = async () => {
   try {
-    const data = await GetData('https://brasilapi.com.br/api/ibge/uf/v1');
+    const data = await getData('https://brasilapi.com.br/api/ibge/uf/v1');
 
     const paths = data.map((path) => ({
       params: {
@@ -47,7 +47,7 @@ export const getStaticProps = async (context) => {
 
   try {
     const [dataBrasilState, dataGeonames, dataBrasilCities] =
-      await GetMultipleDatas([
+      await getMultipleDatas([
         `https://brasilapi.com.br/api/ibge/uf/v1/${uf}`,
         'http://www.geonames.org/childrenJSON?geonameId=3469034',
         `https://brasilapi.com.br/api/ibge/municipios/v1/${uf}`,
@@ -78,7 +78,7 @@ export default function State({
 }) {
   const [state, dispatch] = useReducer(reducer, {
     datas: dataBrasilCities?.sort((stateA, stateB) =>
-      RemoveAccents(stateA.nome) > RemoveAccents(stateB.nome) ? 1 : -1
+      removeAccents(stateA.nome) > removeAccents(stateB.nome) ? 1 : -1
     ),
   });
 
@@ -104,9 +104,10 @@ export default function State({
               </Filter>
               <Search dispatcher={dispatch} data={dataBrasilCities} />
             </FilterAndSearch>
-            {dataBrasilState.sigla.toLowerCase() === 'df' && (
-              <NoCities>Não há municípios disponíveis</NoCities>
-            )}
+            {dataBrasilState.sigla.toLowerCase() === 'df' &&
+              state.datas.length === 0 && (
+                <NoCities>Não há municípios disponíveis</NoCities>
+              )}
             {state.datas.length === 0 &&
               dataBrasilState.sigla.toLowerCase() !== 'df' && (
                 <NoMatches>

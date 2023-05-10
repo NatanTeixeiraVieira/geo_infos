@@ -1,4 +1,4 @@
-import RemoveAccents from '@/utils/RemoveAccents';
+import removeAccents from '@/utils/removeAccents';
 
 const sortSearchReducer = (state, action) => {
   switch (action.type) {
@@ -6,14 +6,14 @@ const sortSearchReducer = (state, action) => {
       return {
         ...state,
         datas: state.datas.sort((stateA, stateB) =>
-          RemoveAccents(stateA.nome) > RemoveAccents(stateB.nome) ? 1 : -1
+          removeAccents(stateA.nome) > removeAccents(stateB.nome) ? 1 : -1
         ),
       };
     case 'Z - A':
       return {
         ...state,
         datas: state.datas.sort((stateA, stateB) =>
-          RemoveAccents(stateA.nome) < RemoveAccents(stateB.nome) ? 1 : -1
+          removeAccents(stateA.nome) < removeAccents(stateB.nome) ? 1 : -1
         ),
       };
     case 'Regiões (A - Z)':
@@ -48,8 +48,8 @@ const sortSearchReducer = (state, action) => {
       return {
         ...state,
         datas: action.payload.data.filter((data) =>
-          RemoveAccents(data.nome.toLowerCase()).includes(
-            RemoveAccents(action.payload.value.toLowerCase().trim())
+          removeAccents(data.nome.toLowerCase()).includes(
+            removeAccents(action.payload.value.toLowerCase().trim())
           )
         ),
       };

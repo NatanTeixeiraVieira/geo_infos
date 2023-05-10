@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
     height: 4.5rem;
     padding: 0 2rem;
-    background-color: ${theme.colors.secundary};
+    background-color: ${theme.colors.secondary};
 
     img {
       width: 4rem;

@@ -3,14 +3,14 @@ export default {
 
   colors: {
     primary: '#ffffff',
-    secundary: '#393E41',
+    secondary: '#393E41',
 
     background: '#E7E5DF',
 
     button: '#44bba4',
 
     textPrimary: '#000000',
-    textSecundary: '#ffffff',
+    textSecondary: '#ffffff',
 
     border: '#767676',
     placeholder: '#lightgray',

@@ -7,13 +7,13 @@ import RequestError from '@/components/RequestError';
 import Search from '@/components/Search';
 import States from '@/components/States';
 import reducer from '@/reducers/sortSearchReducer';
-import { GetMultipleDatas } from '@/utils/FetchData';
+import { getMultipleDatas } from '@/utils/fetchData';
 
 import { Container, FilterAndSearch } from '@/styles/pages/Home';
 
 export const getStaticProps = async () => {
   try {
-    const [dataBrasilState, dataGeonames] = await GetMultipleDatas([
+    const [dataBrasilState, dataGeonames] = await getMultipleDatas([
       'https://brasilapi.com.br/api/ibge/uf/v1',
       'http://www.geonames.org/childrenJSON?geonameId=3469034',
     ]);
